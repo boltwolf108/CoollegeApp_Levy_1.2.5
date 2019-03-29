@@ -83,7 +83,7 @@ public class ApplicantActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    //-----------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
