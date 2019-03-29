@@ -7,11 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class ProfileFragment extends Fragment {
+
     @Override
-    onCreativeView (LayoutInflater inflater, ViewGroup view, Bundle bundle){
+    public View onCreateView(LayoutInflater inflater, ViewGroup view, Bundle bundle){
         super.onCreateView(inflater, view, bundle);
 
+        //New code
         View rootView = inflater.inflate(R.layout.fragment_profile, view, false);
-        return view;
+        return rootView;
     }
 }

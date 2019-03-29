@@ -7,11 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class FamilyMemberFragment extends Fragment {
-    @Override
-    onCreativeView (LayoutInflater inflater, ViewGroup view, Bundle bundle){
+
+@Override
+public View onCreateView(LayoutInflater inflater, ViewGroup view, Bundle bundle){
         super.onCreateView(inflater, view, bundle);
 
+        //New code
         View rootView = inflater.inflate(R.layout.fragment_family_member, view, false);
-        return view;
+        return rootView;
     }
 }
