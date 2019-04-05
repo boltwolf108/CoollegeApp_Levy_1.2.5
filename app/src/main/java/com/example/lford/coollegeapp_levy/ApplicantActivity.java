@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,13 +16,26 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.backendless.Backendless;
+import com.backendless.BackendlessUser;
+
 public class ApplicantActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    Fragment contentFragment=null;
+    Fragment contentFragment = null;
+    final String APP_ID = getString(R.string.APP_ID);
+    final String API_KEY = getString(R.string.API_KEY);
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Backendless.initApp (this, APP_ID, API_KEY);
+
+        BackendlessUser user = new BackendlessUser();
+        user.setEmail("levyf2001@gmail.com");
+        user.setPassword("password1");
+
         setContentView(R.layout.activity_applicant);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -43,10 +57,10 @@ public class ApplicantActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
-
-    //-----------------------------------------------------------------------------------------
-
+//------------------------------------------------------------------------------------------------
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -56,18 +70,14 @@ public class ApplicantActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
-    //------------------------------------------------------------------------------------------
-
+//------------------------------------------------------------------------------------------------
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
-    //-------------------------------------------------------------------------------------------
-
+//------------------------------------------------------------------------------------------------
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -82,9 +92,7 @@ public class ApplicantActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-
-    //------------------------------------------------------------------------------------------
-
+//-------------------------------------------------------------------------------------------------
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -92,16 +100,15 @@ public class ApplicantActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.family_member) {
-            // Handle the camera action
             contentFragment = new FamilyMemberFragment();
         } else if (id == R.id.profile) {
             contentFragment = new ProfileFragment();
-        }if (contentFragment !=null){
+        }
+        if (contentFragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, contentFragment);
+            ft.commit();
         }
-
-        //---------------------------------------------------------------------------------------
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

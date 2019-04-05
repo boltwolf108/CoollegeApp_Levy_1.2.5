@@ -14,13 +14,13 @@ public class FamilyMemberFragment extends Fragment {
 @Override
 public View onCreateView(LayoutInflater inflater, ViewGroup view, Bundle bundle){
         super.onCreateView(inflater, view, bundle);
-
+        Guardian guardian = new Guardian();
         //New code
         View rootView = inflater.inflate(R.layout.fragment_family_member, view, false);
         firstnametext = rootView.findViewById(R.id.editText);
         lastnametext = rootView.findViewById(R.id.editText2);
-        lastnametext.setText(FamilyMember.getLastName());
-        firstnametext.setText(FamilyMember.getFirstName());
+        lastnametext.setText(guardian.getLastName());
+        firstnametext.setText(guardian.getFirstName());
         return rootView;
     }
 }
