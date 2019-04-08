@@ -7,6 +7,7 @@ public class Profile {
     String lastName;
     String firstName;
     Date dateOfBirth;
+    String objectId;
 
     public String getLastName() {
         return lastName;
@@ -25,7 +26,17 @@ public class Profile {
     }
 
     public Profile(){
+        firstName = "alan";
+        lastName = "turing";
         dateOfBirth = new Date();
+    }
+
+    public String getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
     }
 
 

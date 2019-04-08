@@ -18,4 +18,11 @@ public class Guardian {
         this.firstName = firstName;
     }
 
+    public Guardian(){
+        super();
+    }
+
+    public Guardian(String firstName, String lastName){
+        //super(firstName, lastName);
+    }
 }
