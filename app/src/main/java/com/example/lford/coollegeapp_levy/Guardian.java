@@ -1,6 +1,6 @@
 package com.example.lford.coollegeapp_levy;
 
-public class Guardian {
+public class Guardian extends FamilyMember {
     String lastName;
     String firstName;
 
