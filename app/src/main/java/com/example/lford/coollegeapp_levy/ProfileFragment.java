@@ -34,7 +34,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup view, Bundle bundle){
         super.onCreateView(inflater, view, bundle);
         mProfile = new Profile();
-        String whereClause = "email = 'jlinburg@doversd.org'";
+        String whereClause = "email = 'levyf2001@gmail.com'";
         //Retrieve from Backendless
         DataQueryBuilder query = DataQueryBuilder.create();
         query.setWhereClause(whereClause);

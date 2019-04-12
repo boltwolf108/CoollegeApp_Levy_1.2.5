@@ -43,7 +43,6 @@ public class ApplicantActivity extends AppCompatActivity
         user.setEmail("levyf2001@gmail.com");
         user.setPassword("password1");
 
-
         Backendless.UserService.register(user, new AsyncCallback<BackendlessUser>(){
             @Override
             public void handleResponse(BackendlessUser backendlessUser){
@@ -56,13 +55,14 @@ public class ApplicantActivity extends AppCompatActivity
         });
 
 
+        Object mProfile;
         Backendless.Data.of(Profile.class).save(mProfile, new AsyncCallback<Profile>() {
             @Override
             public void handleResponse(Profile response) {
-                Log.i(TAG, "Saved profile to Backendless");
+                //Log.i(TAG, "Saved profile to Backendless");
             }
             public void handleFault(BackendlessFault fault) {
-                Log.i(TAG, "Failed to save profile!" + fault.getMessage());
+                //Log.i(TAG, "Failed to save profile!" + fault.getMessage());
             }
         });
 
@@ -89,13 +89,13 @@ public class ApplicantActivity extends AppCompatActivity
             public void handleResponse(List<Profile> profile) {
                 if (!profile.isEmpty()) {
                     String profileId = profile.get(0).getObjectId();
-                    Log.d(TAG, "Object ID: " + profileId);
+                    //Log.d(TAG, "Object ID: " + profileId);
                     mProfile.setObjectId(profileId);
                 }
             }
             @Override
             public void handleFault(BackendlessFault fault) {
-                Log.e(TAG, "Failed to find profile: " + fault.getMessage());
+                //Log.e(TAG, "Failed to find profile: " + fault.getMessage());
             }
         });
         //--------------------------------------------------------------------------------

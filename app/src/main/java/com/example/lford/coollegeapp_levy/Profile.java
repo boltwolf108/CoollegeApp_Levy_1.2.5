@@ -8,6 +8,7 @@ public class Profile {
     String firstName;
     Date dateOfBirth;
     String objectId;
+    String email;
 
     public String getLastName() {
         return lastName;
@@ -29,6 +30,7 @@ public class Profile {
         firstName = "alan";
         lastName = "turing";
         dateOfBirth = new Date();
+        email = "levyf2001@gmail.com";
     }
 
     public String getObjectId() {
