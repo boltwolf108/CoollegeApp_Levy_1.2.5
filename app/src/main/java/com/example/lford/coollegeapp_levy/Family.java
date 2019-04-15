@@ -13,8 +13,10 @@ public class Family {
         family= new ArrayList<>();
         Guardian mom = new Guardian("my", "mother");
         Guardian dad = new Guardian("my", "father");
+        Sibling dummy = new Sibling("my", "stupid bro");
         family.add(mom);
         family.add(dad);
+        family.add(dummy);
     }
     //--------------------------------------------------------------------------------------
     public static Family getFamily(){
