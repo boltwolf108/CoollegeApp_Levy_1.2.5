@@ -38,7 +38,7 @@ public class Guardian extends FamilyMember {
     }
 
     public String toString() {
-        String result = "Guardian: " + this.getFirstName() + this.getLastName() + "\nOccupation" + this.occupation;
+        String result = "Guardian: " + this.getFirstName() + this.getLastName() + "\nOccupation : " + this.occupation;
         return result;
     }
 

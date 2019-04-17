@@ -30,12 +30,16 @@ public class ApplicantActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     //-----------------------------------------------------------------------------------------
     Fragment contentFragment = null;
-    final String APP_ID = getString(R.string.APP_ID);
-    final String API_KEY = getString(R.string.API_KEY);
+    String APP_ID;
+    String API_KEY;
+    private final String MY_EMAIL_ADDRESS = "levyf2001@gmail.com";
+    public static final String EMAIL_PREF = "EMAIL_PREF";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        APP_ID = getString(R.string.APP_ID);
+        API_KEY = getString(R.string.API_KEY);
         Backendless.initApp (this, APP_ID, API_KEY);
 
 
@@ -55,50 +59,7 @@ public class ApplicantActivity extends AppCompatActivity
         });
 
 
-        Object mProfile;
-        Backendless.Data.of(Profile.class).save(mProfile, new AsyncCallback<Profile>() {
-            @Override
-            public void handleResponse(Profile response) {
-                //Log.i(TAG, "Saved profile to Backendless");
-            }
-            public void handleFault(BackendlessFault fault) {
-                //Log.i(TAG, "Failed to save profile!" + fault.getMessage());
-            }
-        });
 
-
-        SharedPreferences sharedPreferences =
-                this.getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(EMAIL_PREF, MY_EMAIL_ADDRESS);
-        editor.commit();
-
-        SharedPreferences sharedPreferences =
-                getActivity().getPreferences(Context.MODE_PRIVATE);
-        String email = sharedPreferences.getString(ApplicantActivity.EMAIL_PREF, null);
-        if (mProfile.getEmail() == null) {
-            mProfile.setEmail(email);
-        }
-
-
-        String whereClause = "email = '" + email + "'";
-        DataQueryBuilder query = DataQueryBuilder.create();
-        query.setWhereClause(whereClause);
-        Backendless.Data.of(Profile.class).find(query, new AsyncCallback<List<Profile>>() {
-            @Override
-            public void handleResponse(List<Profile> profile) {
-                if (!profile.isEmpty()) {
-                    String profileId = profile.get(0).getObjectId();
-                    //Log.d(TAG, "Object ID: " + profileId);
-                    mProfile.setObjectId(profileId);
-                }
-            }
-            @Override
-            public void handleFault(BackendlessFault fault) {
-                //Log.e(TAG, "Failed to find profile: " + fault.getMessage());
-            }
-        });
-        //--------------------------------------------------------------------------------
         setContentView(R.layout.activity_applicant);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -123,6 +84,7 @@ public class ApplicantActivity extends AppCompatActivity
 
 
     }
+
 //------------------------------------------------------------------------------------------------
     @Override
     public void onBackPressed() {

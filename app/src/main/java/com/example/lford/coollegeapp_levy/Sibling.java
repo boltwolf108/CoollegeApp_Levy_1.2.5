@@ -4,6 +4,10 @@ public class Sibling extends FamilyMember {
     String firstName;
     String lastName;
 
+    public Sibling(){
+        super();
+    }
+
     public String toString(){
         String result = "Sibling: " + this.getFirstName() + this.getLastName();
         return result;

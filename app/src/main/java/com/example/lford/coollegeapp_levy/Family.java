@@ -33,4 +33,12 @@ public class Family {
     public void setFamily(ArrayList<FamilyMember> family) {
         this.family = family;
     }
+
+    public void addFamilyMember( FamilyMember fm){
+        family.add(fm);
+    }
+
+    public void deleteFamilyMember(FamilyMember fm){
+        family.remove(fm);
+    }
 }
