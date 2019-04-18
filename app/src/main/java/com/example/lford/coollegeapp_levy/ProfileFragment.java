@@ -3,6 +3,7 @@ package com.example.lford.coollegeapp_levy;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
@@ -12,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.backendless.Backendless;
 import com.backendless.async.callback.AsyncCallback;
@@ -19,12 +22,16 @@ import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.BackendlessDataQuery;
 import com.backendless.persistence.DataQueryBuilder;
 
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
 public class ProfileFragment extends Fragment {
 
     public static final int REQUEST_DATE_OF_BIRTH = 0;
+    private ImageButton mSelfieButton;
+    private ImageView mSelfieView;
+    private File mSelfieFile;
     Button DatePickerButton;
     Button mSubmit;
     EditText firstNameEdit;
@@ -153,6 +160,17 @@ public class ProfileFragment extends Fragment {
                 Log.e("Profile Fragment", "Failed to find profile: " + fault.getMessage());
             }
         });
+    }
+
+    public void updateSelfieView(){
+
+    }
+    public File getPhotoFile() {
+        File externalFilesDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        if (externalFilesDir == null) {
+            return null;
+        }
+        return new File (externalFilesDir, mProfile.getPhotoFilename());
     }
 
 }

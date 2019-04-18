@@ -9,6 +9,7 @@ public class Profile {
     Date dateOfBirth;
     String objectId;
     String email;
+    private final static String photoFileName = "IMG_PROFILE.jpg";
 
     public String getLastName() {
         return lastName;
@@ -41,5 +42,7 @@ public class Profile {
         this.objectId = objectId;
     }
 
-
+    public String getPhotoFilename(){
+        return photoFileName;
+    }
 }
