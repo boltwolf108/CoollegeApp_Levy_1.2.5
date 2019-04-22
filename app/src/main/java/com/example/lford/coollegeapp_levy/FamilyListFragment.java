@@ -89,19 +89,34 @@ public class FamilyListFragment extends ListFragment {
             case R.id.menu_item_new_guardian:
                 Log.d(TAG, "Selected add new guardian.");
                 Guardian guardian = new Guardian();
+                boolean duplicate = false;
                 for (FamilyMember f: Family.getFamily().getFamilyList()) {
                     if (f == guardian) {
                         Log.i(TAG, "Possible match " + guardian + " and" + f);
+                        duplicate = true;
                     }
+                    else duplicate = false;
                 }
-                Family.getFamily().addFamilyMember(guardian);
-                adapter.notifyDataSetChanged();
+                if(duplicate == true) {
+                    Family.getFamily().addFamilyMember(guardian);
+                    adapter.notifyDataSetChanged();
+                }
                 return true;
             case R.id.menu_item_new_sibling:
                 Log.d(TAG, "Selected add new sibling.");
                 Sibling sibling = new Sibling();
-                Family.getFamily().addFamilyMember(sibling);
-                adapter.notifyDataSetChanged();
+                boolean sduplicate = false;
+                for (FamilyMember f: Family.getFamily().getFamilyList()) {
+                    if (f == sibling) {
+                        Log.i(TAG, "Possible match " + sibling + " and" + f);
+                        sduplicate = true;
+                    }
+                    else sduplicate = false;
+                }
+                if(sduplicate == true) {
+                    Family.getFamily().addFamilyMember(sibling);
+                    adapter.notifyDataSetChanged();
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -42,4 +42,22 @@ public abstract class FamilyMember {
         this.lastName = lastName;
     }
 
+    public boolean equals(Object o) {
+        if ((o instanceof Guardian) && (this instanceof Guardian)) {
+            // both are guardians so cast the Object
+            Guardian g = (Guardian) o;
+            // test for equality of first and last names for g and this
+            if(g.getFirstName() == mFirstName && g.getLastName() == lastName) {
+                return true;
+            }
+            return false;
+        }
+        else{
+            Sibling g = (Sibling) o;
+            if(g.getFirstName() == mFirstName && g.getLastName() == lastName) {
+                return true;
+            }
+            return false;
+        }
+    }
 }

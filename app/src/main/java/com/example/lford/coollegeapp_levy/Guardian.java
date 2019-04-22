@@ -34,12 +34,13 @@ public class Guardian extends FamilyMember {
 
     public Guardian(String firstName, String lastName) {
         occupation = "unknown";
-        //super(firstName, lastName);
     }
 
     public String toString() {
         String result = "Guardian: " + this.getFirstName() + this.getLastName() + "\nOccupation : " + this.occupation;
         return result;
     }
+
+
 
 }
