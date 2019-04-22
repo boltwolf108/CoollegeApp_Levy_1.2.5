@@ -16,9 +16,9 @@ public View onCreateView(LayoutInflater inflater, ViewGroup view, Bundle bundle)
         super.onCreateView(inflater, view, bundle);
         Guardian guardian = new Guardian();
         //New code
-        View rootView = inflater.inflate(R.layout.fragment_family_member, view, false);
-        firstnametext = rootView.findViewById(R.id.editText);
-        lastnametext = rootView.findViewById(R.id.editText2);
+        View rootView = inflater.inflate(R.layout.fragment_guardian, view, false);
+        firstnametext = rootView.findViewById(R.id.firstEdit);
+        lastnametext = rootView.findViewById(R.id.lastEdit);
         lastnametext.setText(guardian.getLastName());
         firstnametext.setText(guardian.getFirstName());
         return rootView;

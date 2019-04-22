@@ -2,6 +2,8 @@ package com.example.lford.coollegeapp_levy;
 
 public abstract class FamilyMember {
 
+    public static final String EXTRA_RELATION = "org.pltw.examples.collegeapp.relation";
+    public static final String EXTRA_INDEX = "org.pltw.examples.collegeapp.index";
 
     String mFirstName;
     String lastName;
